@@ -1,1 +1,7 @@
-console.log('hello world')
+game = {
+    start() {
+        console.log('start game')
+    }
+}
+
+game.start()
