@@ -35,7 +35,13 @@ let game = {
     preload() {
         this.logo = new Image()
         this.logo.src = '/img/Угодай число.png'
-        console.log(this.logo.src)        
+        this.logo.addEventListener('load', () => {
+            window.requestAnimationFrame(() => {
+                this.ctx.drawImage(this.logo, 640 - (529 / 2), 39)
+                console.log('logo loaded and drawn')
+            })
+        })
+             
     },
     start() {
         console.log('start game')
