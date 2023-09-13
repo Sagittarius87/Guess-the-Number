@@ -41,6 +41,15 @@ let game = {
                 console.log('logo loaded and drawn')
             })
         })
+
+        this.mainImage2 = new Image()
+        this.mainImage2.src = '/img/Ресурс 2 1.png'
+        this.mainImage2.addEventListener('load', () => {
+            window.requestAnimationFrame(() => {
+                this.ctx.drawImage(this.mainImage2, 651 - (191 / 2), 169)
+                console.log('mainImage2 loaded and drawn')
+            })
+        })
              
     },
     start() {
