@@ -52,6 +52,9 @@ let game = {
         })
              
     },
+    update() {
+        console.log('update game')
+    },
     start() {
         console.log('start game')
     }
@@ -60,3 +63,4 @@ let game = {
 game.start()
 game.init()
 game.preload()
+game.update()
