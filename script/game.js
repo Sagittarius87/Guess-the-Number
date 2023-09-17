@@ -1,6 +1,8 @@
 let game = {
     running: true,
     ctx: null,
+    width: 1280,
+    height: 1080,
     enteredNumber: null,
     hiddenNumber: null,
     messages: ['0'],
@@ -33,11 +35,15 @@ let game = {
         console.log('canvas start')
     },
     preload() {
+        
+             
+    },
+    preloadSprites() {
         this.logo = new Image()
         this.logo.src = '/img/Угодай число.png'
         this.logo.addEventListener('load', () => {
             window.requestAnimationFrame(() => {
-                this.ctx.drawImage(this.logo, 640 - (529 / 2), 39)
+                this.render()
                 console.log('logo loaded and drawn')
             })
         })
@@ -46,14 +52,19 @@ let game = {
         this.mainImage2.src = '/img/Ресурс 2 1.png'
         this.mainImage2.addEventListener('load', () => {
             window.requestAnimationFrame(() => {
-                this.ctx.drawImage(this.mainImage2, 651 - (191 / 2), 169)
+                this.render()
                 console.log('mainImage2 loaded and drawn')
             })
         })
-             
     },
+    preloadSounds() {},
     update() {
         console.log('update game')
+    },
+    render() {
+        this.ctx.clearRect(0, 0, this.width, this.height)
+        this.ctx.drawImage(this.logo, 640 - (529 / 2), 39)
+        this.ctx.drawImage(this.mainImage2, 651 - (191 / 2), 169)
     },
     start() {
         console.log('start game')
