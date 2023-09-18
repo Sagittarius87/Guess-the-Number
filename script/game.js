@@ -25,7 +25,12 @@ let game = {
         buttonEight: null,
         buttonNine: null,
         buttonBackspace: null,
-        buttonCheck: null
+        buttonCheck: null,
+        imageSmile1: null,
+        imageSmile2: null,
+        imageSmile3: null,
+        imageSmile4: null,
+        imageSmile5: null
     },
     sounds: {
         soundClick: null
@@ -34,11 +39,29 @@ let game = {
         this.ctx = document.getElementById('idcanvas').getContext('2d')
         console.log('canvas start')
     },
-    preload() {
-        
-             
+    preload(callback) {
+        let loaded = 0
+        let required = Object.keys(this.sprites).length
+        let onResourcesLoad = () => {
+            loaded++
+            if (loaded >= required) {
+                callback()
+            }
+        }
+        this.preloadSprites(onResourcesLoad)
+        console.log(loaded)
+        console.log(required)   
+        console.log('preload completed')          
     },
-    preloadSprites() {
+    preloadSprites(onResourcesLoad) {
+        for (let key in this.sprites) {
+            this.sprites[key] = new Image()
+            this.sprites[key].src = '/img/' + key + '.png'
+            this.sprites[key].addEventListener('load', onResourcesLoad)
+        }
+        console.log('preload all sprites completed')
+
+        /*
         this.logo = new Image()
         this.logo.src = '/img/Угодай число.png'
         this.logo.addEventListener('load', () => {
@@ -56,22 +79,39 @@ let game = {
                 console.log('mainImage2 loaded and drawn')
             })
         })
+        */
     },
-    preloadSounds() {},
+    preloadSounds() {
+        console.log('preload all sounds completed')
+    },
     update() {
-        console.log('update game')
+        console.log('update completed')
+    },
+    run() {
+        if (this.running) {
+            window.requestAnimationFrame(() => {
+                this.update()
+                this.render()
+                this.run()    
+            })
+        }
+        console.log('run completed')
     },
     render() {
         this.ctx.clearRect(0, 0, this.width, this.height)
-        this.ctx.drawImage(this.logo, 640 - (529 / 2), 39)
-        this.ctx.drawImage(this.mainImage2, 651 - (191 / 2), 169)
+        this.ctx.drawImage(this.sprites.logo, 640 - (529 / 2), 39)
+        this.ctx.drawImage(this.sprites.mainImage2, 651 - (191 / 2), 169)
+        console.log('render completed')
     },
     start() {
-        console.log('start game')
+        this.init()
+        this.preload(() => {
+            this.run()
+        })
+        console.log('game started')
     }
 }
 
-game.start()
-game.init()
-game.preload()
-game.update()
+window.addEventListener('load', () => {
+    game.start()
+})
