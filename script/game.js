@@ -99,8 +99,11 @@ let game = {
     },
     render() {
         this.ctx.clearRect(0, 0, this.width, this.height)
-        this.ctx.drawImage(this.sprites.logo, 640 - (529 / 2), 39)
-        this.ctx.drawImage(this.sprites.mainImage2, 651 - (191 / 2), 169)
+        this.ctx.drawImage(this.sprites.logo, 376, 39)
+        this.ctx.drawImage(this.sprites.mainImage2, 547, 169)
+        this.ctx.drawImage(this.sprites.mainImage1, 46, 136)
+        this.ctx.drawImage(this.sprites.mainImage3, 777, 136)
+        this.ctx.drawImage(this.sprites.buttonNewGame, 517, 490)
         console.log('render completed')
     },
     start() {
