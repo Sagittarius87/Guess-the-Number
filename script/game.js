@@ -35,8 +35,37 @@ let game = {
     sounds: {
         soundClick: null
     },
+    gameUI: {
+        buttonNewGame: {
+            x: 517,
+            y: 490,
+            width: 251,
+            height: 75
+        },
+        eventOfButton(buttonName) {
+            window.addEventListener('mousedown', e => {
+                console.log(e)
+                if (e.x - 192 >= buttonName.x && e.x - 192 <= buttonName.x + buttonName.width && e.y >= buttonName.y && e.y <= buttonName.y + buttonName.height) {
+                //if ((e.x <= buttonName.x + buttonName.width) && (e.y <= buttonName.y + buttonName.height)) {
+                    console.log('click x and y')
+                    console.log(e.x)
+                    console.log(e.y)
+                    console.log(buttonName.x)
+                    console.log(buttonName.y)
+                    console.log(buttonName.width)
+                    console.log(buttonName.height)
+                    console.log(buttonName.x + buttonName.width)
+                    console.log(buttonName.y + buttonName.height)
+                } else {
+                    console.log('not click x and y')
+                }
+            })
+        }
+    },
     init() {
         this.ctx = document.getElementById('idcanvas').getContext('2d')
+        //this.setEvants()
+        
         console.log('canvas start')
     },
     preload(callback) {
@@ -85,7 +114,12 @@ let game = {
         console.log('preload all sounds completed')
     },
     update() {
-        console.log('update completed')
+        //this.ctx.onmousedown = function(e) {
+        //    console.log('button new game click')
+        //} 
+                //console.log('update completed')
+        this.gameUI.eventOfButton(this.gameUI.buttonNewGame)
+               
     },
     run() {
         if (this.running) {
@@ -94,8 +128,9 @@ let game = {
                 this.render()
                 this.run()    
             })
+            
         }
-        console.log('run completed')
+        //console.log('run completed')
     },
     render() {
         this.ctx.clearRect(0, 0, this.width, this.height)
@@ -104,7 +139,11 @@ let game = {
         this.ctx.drawImage(this.sprites.mainImage1, 46, 136)
         this.ctx.drawImage(this.sprites.mainImage3, 777, 136)
         this.ctx.drawImage(this.sprites.buttonNewGame, 517, 490)
-        console.log('render completed')
+        
+        
+        
+        
+        //console.log('render completed')
     },
     start() {
         this.init()
@@ -112,9 +151,51 @@ let game = {
             this.run()
         })
         console.log('game started')
+        
+    },
+    setEvants() {
+        window.addEventListener('mousedown', (e)=> {
+            //if (e.which == 1) {
+            //    console.log(e)
+            //}
+            
+            console.log(e)
+            //console.log(this.ctx.sprites.buttonNewGame.x)
+        }) 
+    }
+
+}
+/*
+game.gameUI = {
+    buttonNewGame: {
+        x: 517,
+        y: 490,
+        width: 251,
+        height: 75
+    },
+    
+    eventOfButton(buttonName) {
+        window.addEventListener('mousedown', e => {
+            console.log(e)
+            if (e.x > this.buttonName.x + this.buttonName.width) {
+                console.log('click x')
+                console.log(e.x)
+                console.log(this.buttonName.x)
+                console.log(this.buttonName.width)
+                console.log(this.buttonName.x + this.buttonName.width)
+            } else {
+                console.log('not click x')
+            }
+        })
     }
 }
+*/
 
 window.addEventListener('load', () => {
     game.start()
 })
+
+
+
+
+
