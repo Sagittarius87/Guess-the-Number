@@ -49,12 +49,26 @@ h1 {
     margin-left: 39px;
 }
 
+.mainForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #idCanvas {
     background-color: rgb(184, 191, 199);
 }
 
-
-
 .newGameUI {
     display: none;
+}
+
+.buttonNewGame {
+    width: 251px;
+    height: 75px;
+    border-radius: 50px;
+    border-style: none;
+    font-size: 48px;
+    color: black;
+    
 }
