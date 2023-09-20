@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Nautilius Pompilius, cursive;
+    font-family: Nautilius Pompilius;
+    color: white;
 }
 
 @font-face {
@@ -12,6 +13,11 @@
 
 body {
     background-color: black;
+}
+
+h1 {
+    font-size: 96px;
+    font-weight: normal;
 }
 
 .gameWindow {
@@ -35,8 +41,4 @@ body {
 
 .newGameUI {
     display: none;
-}
-
-* {
-    color: rgb(142, 248, 248);
 }
