@@ -12,6 +12,10 @@ body {
     width: 1280px;
     height: 1080px;
     background-color: slategray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 #idCanvas {
