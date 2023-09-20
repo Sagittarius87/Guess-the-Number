@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Nautilius Pompilius, cursive;
+}
+
+@font-face {
+    font-family: Nautilius Pompilius;
+    src: url(/font/Nautiluspompilius-X7JG.otf);
 }
 
 body {
