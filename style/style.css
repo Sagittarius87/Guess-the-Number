@@ -51,6 +51,7 @@ h1 {
 
 .mainForm {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -59,9 +60,17 @@ h1 {
     background-color: rgb(184, 191, 199);
 }
 
+.GameUI {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .newGameUI {
     display: flex;
     flex-direction: column;
+    
     align-items: center;
 }
 
@@ -78,6 +87,19 @@ h1 {
 
 .labelEnteredNumber {
     width: 75px;
+    height: 75px;
+    border-radius: 50px;
+    border-style: none;
+    font-size: 48px;
+    color: black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.labelMessage {
+    width: 1067px;
     height: 75px;
     border-radius: 50px;
     border-style: none;
