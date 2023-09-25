@@ -117,3 +117,8 @@ h1 {
     display: flex;
     flex-direction: row;
 }
+
+.buttonCheck {
+    width: 251px;
+    height: 75px;
+}
