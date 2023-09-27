@@ -1,14 +1,14 @@
+@font-face {
+    font-family: Nautilius Pompilius;
+    src: url(/font/Nautiluspompilius-X7JG.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Nautilius Pompilius;
     color: white;
-}
-
-@font-face {
-    font-family: Nautilius Pompilius;
-    src: url(/font/Nautiluspompilius-X7JG.otf);
 }
 
 body {
@@ -28,7 +28,7 @@ h1 {
 .gameWindow {
     width: 1280px;
     height: 1080px;
-    background-color: slategray;
+    background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,10 +54,6 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-#idCanvas {
-    background-color: rgb(184, 191, 199);
 }
 
 .gameUI {
@@ -90,7 +86,6 @@ h1 {
     width: 75px;
     height: 75px;
 }
-
 
 .buttonNewGame {
     width: 251px;
