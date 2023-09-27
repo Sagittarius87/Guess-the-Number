@@ -68,6 +68,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
 }
 
 .buttonNewGame, .labelEnteredNumber, .labelMessage, .buttonZero, .buttonOne, 
@@ -90,11 +91,19 @@ h1 {
 .buttonNewGame {
     width: 251px;
     height: 75px;
+    margin-top: 80px;
+    display: block;
+}
+
+.labelEnteredNumber, .labelMessage, .buttonZero, .buttonOne, .buttonTwo, .buttonThree, .buttonFour, 
+.buttonFive, .buttonSix, .buttonSeven, .buttonEight, .buttonNine, .buttonBackspace, .buttonCheck {
+    margin: 17px;
 }
 
 .labelEnteredNumber {
     width: 75px;
     height: 75px;
+    margin-top: -13px;
     display: flex;
     justify-content: center;
     align-items: center;
