@@ -1,6 +1,25 @@
-
-
-
+let game = {
+    ctx: null,
+    with: 1280,
+    height: 1080,
+    enteredNumber: null,
+    hiddenNumber: null,
+    messages: ['0'],
+    sprites: {
+        imageSmile1: null,
+        imageSmile2: null,
+        imageSmile3: null,
+        imageSmile4: null,
+        imageSmile5: null
+    },
+    sounds: {
+        soundClick: null
+    },
+    init() {},
+    preload() {},
+    render() {},
+    start() {}
+}
 
 // let game = {
 //     running: true,
