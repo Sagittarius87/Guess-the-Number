@@ -15,11 +15,70 @@ let game = {
     sounds: {
         soundClick: null
     },
-    init() {},
+    gameUI: {
+        buttonNewGame: null,
+        labelEnteredNumber: null,
+        labelMessage: null,
+        buttonZero: null,
+        buttonOne: null,
+        buttonTwo: null,
+        buttonThree: null,
+        buttonFour: null,
+        buttonFive: null,
+        buttonSix: null,
+        buttonSeven: null,
+        buttonEight: null,
+        buttonNine: null,
+        buttonBackspace: null,
+        buttonCheck: null
+    },
+    init() {
+        this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
+        console.log(this.gameUI.buttonNewGame)
+        this.gameUI.labelEnteredNumber = document.getElementById('labelEnteredNumber')
+        console.log(this.gameUI.labelEnteredNumber)
+        this.gameUI.labelMessage = document.getElementById('labelMessage')
+        console.log(this.gameUI.labelMessage)
+        this.gameUI.buttonZero = document.getElementById('buttonZero')
+        console.log(this.gameUI.buttonZero)
+        this.gameUI.buttonOne = document.getElementById('buttonOne')
+        console.log(this.gameUI.buttonOne)
+        this.gameUI.buttonTwo = document.getElementById('buttonTwo')
+        console.log(this.gameUI.buttonTwo)
+        this.gameUI.buttonThree = document.getElementById('buttonThree')
+        console.log(this.gameUI.buttonThree)
+        this.gameUI.buttonFour = document.getElementById('buttonFour')
+        console.log(this.gameUI.buttonFour)
+        this.gameUI.buttonFive = document.getElementById('buttonFive')
+        console.log(this.gameUI.buttonFive)
+        this.gameUI.buttonSix = document.getElementById('buttonSix')
+        console.log(this.gameUI.buttonSix)
+        this.gameUI.buttonSeven = document.getElementById('buttonSeven')
+        console.log(this.gameUI.buttonSeven)
+        this.gameUI.buttonEight = document.getElementById('buttonEight')
+        console.log(this.gameUI.buttonEight)
+        this.gameUI.buttonNine = document.getElementById('buttonNine')
+        console.log(this.gameUI.buttonNine)
+        this.gameUI.buttonBackspace = document.getElementById('buttonBackspace')
+        console.log(this.gameUI.buttonBackspace)
+        this.gameUI.buttonCheck = document.getElementById('buttonCheck')
+        console.log(this.gameUI.buttonCheck)
+    },
+    setEvants() {
+        this.gameUI.buttonNewGame.onclick = () => {
+            console.log('click')    
+        }
+    },
     preload() {},
+    update() {
+        
+    },
     render() {},
     start() {}
 }
+
+game.init()
+game.setEvants()
 
 // let game = {
 //     running: true,
