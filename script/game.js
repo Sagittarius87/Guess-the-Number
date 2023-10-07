@@ -2,6 +2,9 @@ let game = {
     ctx: null,
     with: 1280,
     height: 1080,
+    gameRunning: false,
+    minNumber: 0,
+    maxNumber: 10,
     enteredNumber: null,
     hiddenNumber: null,
     messages: ['0'],
@@ -17,6 +20,7 @@ let game = {
     },
     gameUI: {
         buttonNewGame: null,
+        newGameUI: null,
         labelEnteredNumber: null,
         labelMessage: null,
         buttonZero: null,
@@ -35,6 +39,8 @@ let game = {
     init() {
         this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
         console.log(this.gameUI.buttonNewGame)
+        this.gameUI.newGameUI = document.getElementById('newGameUI')
+        console.log(this.gameUI.newGameUI)
         this.gameUI.labelEnteredNumber = document.getElementById('labelEnteredNumber')
         console.log(this.gameUI.labelEnteredNumber)
         this.gameUI.labelMessage = document.getElementById('labelMessage')
@@ -66,15 +72,24 @@ let game = {
     },
     setEvants() {
         this.gameUI.buttonNewGame.onclick = () => {
+            this.gameUI.buttonNewGame.style.display = 'none'
+            this.gameUI.newGameUI.style.visibility = 'visible'
+            this.hiddenNumber = this.generatingRandomNumber(this.minNumber, this.maxNumber)
+            console.log(this.hiddenNumber)
             console.log('click')    
         }
+
+
     },
     preload() {},
     update() {
         
     },
     render() {},
-    start() {}
+    start() {},
+    generatingRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
 }
 
 game.init()
