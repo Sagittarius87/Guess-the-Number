@@ -6,6 +6,7 @@ let game = {
     minNumber: 0,
     maxNumber: 10,
     enteredNumber: null,
+    arrayEnteredNumbers: [],
     hiddenNumber: null,
     messages: ['0'],
     sprites: {
@@ -76,10 +77,68 @@ let game = {
             this.gameUI.newGameUI.style.visibility = 'visible'
             this.hiddenNumber = this.generatingRandomNumber(this.minNumber, this.maxNumber)
             console.log(this.hiddenNumber)
-            console.log('click')    
+            console.log('buttonNewGame')    
         }
 
+        this.gameUI.buttonZero.onclick = () => {
+            enteringNumber('0')
+        }
 
+        this.gameUI.buttonOne.onclick = () => {
+            console.log('1')
+        }
+
+        this.gameUI.buttonTwo.onclick = () => {
+            console.log('2')
+        }
+
+        this.gameUI.buttonThree.onclick = () => {
+            console.log('3')
+        }
+
+        this.gameUI.buttonFour.onclick = () => {
+            console.log('4')
+        }
+
+        this.gameUI.buttonFive.onclick = () => {
+            console.log('5')
+        }
+
+        this.gameUI.buttonSix.onclick = () => {
+            console.log('6')
+        }
+
+        this.gameUI.buttonSeven.onclick = () => {
+            console.log('7')
+        }
+
+        this.gameUI.buttonEight.onclick = () => {
+            console.log('8')
+        }
+
+        this.gameUI.buttonNine.onclick = () => {
+            console.log('9')
+        }
+
+        this.gameUI.buttonBackspace.onclick = () => {
+            console.log('buttonBackspace')
+        }
+
+        this.gameUI.buttonCheck.onclick = () => {
+            console.log('buttonCheck')
+        }
+
+        const enteringNumber = (number) => {
+            if (this.arrayEnteredNumbers.length < 2) {
+                this.arrayEnteredNumbers.push(number)       
+            }
+            this.enteredNumber = Number(this.arrayEnteredNumbers.join(''))
+            this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber    
+            
+            console.log(number)
+            console.log(this.arrayEnteredNumbers)
+            console.log(this.enteredNumber)
+        }
     },
     preload() {},
     update() {
