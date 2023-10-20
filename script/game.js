@@ -85,39 +85,39 @@ let game = {
         }
 
         this.gameUI.buttonOne.onclick = () => {
-            console.log('1')
+            enteringNumber('1')
         }
 
         this.gameUI.buttonTwo.onclick = () => {
-            console.log('2')
+            enteringNumber('2')
         }
 
         this.gameUI.buttonThree.onclick = () => {
-            console.log('3')
+            enteringNumber('3')
         }
 
         this.gameUI.buttonFour.onclick = () => {
-            console.log('4')
+            enteringNumber('4')
         }
 
         this.gameUI.buttonFive.onclick = () => {
-            console.log('5')
+            enteringNumber('5')
         }
 
         this.gameUI.buttonSix.onclick = () => {
-            console.log('6')
+            enteringNumber('6')
         }
 
         this.gameUI.buttonSeven.onclick = () => {
-            console.log('7')
+            enteringNumber('7')
         }
 
         this.gameUI.buttonEight.onclick = () => {
-            console.log('8')
+            enteringNumber('8')
         }
 
         this.gameUI.buttonNine.onclick = () => {
-            console.log('9')
+            enteringNumber('9')
         }
 
         this.gameUI.buttonBackspace.onclick = () => {
