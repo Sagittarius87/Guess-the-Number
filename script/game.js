@@ -76,7 +76,7 @@ let game = {
             this.gameUI.buttonNewGame.style.display = 'none'
             this.gameUI.newGameUI.style.visibility = 'visible'
             this.hiddenNumber = this.generatingRandomNumber(this.minNumber, this.maxNumber)
-            console.log(this.hiddenNumber)
+            console.log('hiddenNumber ' + this.hiddenNumber)
             console.log('buttonNewGame')    
         }
 
@@ -121,7 +121,14 @@ let game = {
         }
 
         this.gameUI.buttonBackspace.onclick = () => {
+            if (this.arrayEnteredNumbers != null) {
+                this.arrayEnteredNumbers.pop()
+                this.enteredNumber = this.arrayEnteredNumbers.join('')
+                this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber 
+            }
+            console.log('enteredNumber ' + this.enteredNumber)
             console.log('buttonBackspace')
+            console.log(this.arrayEnteredNumbers)
         }
 
         this.gameUI.buttonCheck.onclick = () => {
@@ -129,15 +136,29 @@ let game = {
         }
 
         const enteringNumber = (number) => {
-            if (this.arrayEnteredNumbers.length < 2) {
-                this.arrayEnteredNumbers.push(number)       
+            let arrayLength = 0
+            if (number == '0') {
+                arrayLength = 1     
+            } else {
+                arrayLength = 2   
+            }
+            if (this.arrayEnteredNumbers.length < arrayLength) {
+                if (this.arrayEnteredNumbers[0] == '0') {
+                            this.arrayEnteredNumbers = []
+                        }
+                this.arrayEnteredNumbers.push(number)
+                }
+            if (number == '0' && this.arrayEnteredNumbers[0] > 0) {
+                while (this.arrayEnteredNumbers.length < 2) {
+                    this.arrayEnteredNumbers.push(number)                    
+                }
             }
             this.enteredNumber = Number(this.arrayEnteredNumbers.join(''))
             this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber    
             
             console.log(number)
             console.log(this.arrayEnteredNumbers)
-            console.log(this.enteredNumber)
+            console.log('enteredNumber ' + this.enteredNumber)
         }
     },
     preload() {},
