@@ -8,7 +8,8 @@ let game = {
     enteredNumber: null,
     arrayEnteredNumbers: [],
     hiddenNumber: null,
-    messages: ['0'],
+    messages: null,
+    numberOfAttempts: null,
     sprites: {
         imageSmile1: null,
         imageSmile2: null,
@@ -76,6 +77,11 @@ let game = {
             this.gameUI.buttonNewGame.style.display = 'none'
             this.gameUI.newGameUI.style.visibility = 'visible'
             this.hiddenNumber = this.generatingRandomNumber(this.minNumber, this.maxNumber)
+            this.numberOfAttempts = 3
+            this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
+            this.gameUI.labelMessage.innerHTML = this.messages
+
+            console.log(this.messages)
             console.log('hiddenNumber ' + this.hiddenNumber)
             console.log('buttonNewGame')    
         }
