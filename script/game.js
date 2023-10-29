@@ -76,13 +76,16 @@ let game = {
         this.gameUI.buttonNewGame.onclick = () => {
             this.gameUI.buttonNewGame.style.display = 'none'
             this.gameUI.newGameUI.style.visibility = 'visible'
-            this.hiddenNumber = this.generatingRandomNumber(this.minNumber, this.maxNumber)
+            this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
-            this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
-            this.gameUI.labelMessage.innerHTML = this.messages
+            messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
+            //this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
+            //this.gameUI.labelMessage.innerHTML = this.messages
+            
 
-            console.log(this.messages)
+            
             console.log('hiddenNumber ' + this.hiddenNumber)
+            console.log('numberOfAttempts ' + this.numberOfAttempts)
             console.log('buttonNewGame')    
         }
 
@@ -138,6 +141,38 @@ let game = {
         }
 
         this.gameUI.buttonCheck.onclick = () => {
+            if (this.enteredNumber != null && this.arrayEnteredNumbers.length > 0) {
+                if (this.numberOfAttempts > 0) {
+                    if (this.enteredNumber == this.hiddenNumber) {
+                        messageOutput(`Вы угодали! Было загаданно число ${this.hiddenNumber}`)
+                        console.log('the number is guessed')
+                    } else if (this.enteredNumber > this.hiddenNumber) {
+                        this.numberOfAttempts--
+                        messageOutput(`Увы, введенное число больше! Осталось попыток: ${this.numberOfAttempts}`)
+                        
+                        console.log('the entered number is greater than')
+                        console.log('numberOfAttempts ' + this.numberOfAttempts)
+                    } else if (this.enteredNumber < this.hiddenNumber) {
+                        this.numberOfAttempts--
+                        messageOutput(`Увы, введенное число меньше! Осталось попыток: ${this.numberOfAttempts}`)
+                        
+                        console.log('the entered number is less than')
+                        console.log('numberOfAttempts ' + this.numberOfAttempts)
+                    }
+                } else {
+                    messageOutput(`Попытки закончились, игра завершена`)
+                    console.log('attempts ended')
+                    console.log('numberOfAttempts ' + this.numberOfAttempts)
+                    
+                }
+
+                console.log('checking')
+            } else {
+                messageOutput(`Вы не ввели число. Введите его!`)
+
+                console.log('not checking')
+            }
+
             console.log('buttonCheck')
         }
 
@@ -166,16 +201,21 @@ let game = {
             console.log(this.arrayEnteredNumbers)
             console.log('enteredNumber ' + this.enteredNumber)
         }
+
+    const messageOutput = (message) => {
+        this.gameUI.labelMessage.innerHTML = message
+        }
+    
+    const generatingRandomNumber = (min, max) => {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
     },
     preload() {},
     update() {
         
     },
     render() {},
-    start() {},
-    generatingRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min)
-    }
+    start() {}
 }
 
 game.init()
