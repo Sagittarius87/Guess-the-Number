@@ -71,7 +71,7 @@ h1 {
     visibility: hidden;
 }
 
-.buttonNewGame, .labelEnteredNumber, .labelMessage, .buttonZero, .buttonOne, 
+.buttonNewGame, .labelEnteredNumber, .labelMessage, .buttonAgain, .buttonZero, .buttonOne, 
 .buttonTwo, .buttonThree, .buttonFour, .buttonFive, .buttonSix, 
 .buttonSeven, .buttonEight, .buttonNine, .buttonBackspace, .buttonCheck {
     border-radius: 50px;
@@ -115,6 +115,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.buttonAgain {
+    width: 251px;
+    height: 75px;
+    display: block;
 }
 
 .buttonsRow1, .buttonsRow2 {

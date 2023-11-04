@@ -25,6 +25,7 @@ let game = {
         newGameUI: null,
         labelEnteredNumber: null,
         labelMessage: null,
+        buttonAgain: null,
         buttonZero: null,
         buttonOne: null,
         buttonTwo: null,
@@ -47,6 +48,8 @@ let game = {
         console.log(this.gameUI.labelEnteredNumber)
         this.gameUI.labelMessage = document.getElementById('labelMessage')
         console.log(this.gameUI.labelMessage)
+        this.gameUI.buttonAgain = document.getElementById('buttonAgain')
+        console.log(this.gameUI.buttonAgain)
         this.gameUI.buttonZero = document.getElementById('buttonZero')
         console.log(this.gameUI.buttonZero)
         this.gameUI.buttonOne = document.getElementById('buttonOne')
@@ -75,6 +78,7 @@ let game = {
     setEvants() {
         this.gameUI.buttonNewGame.onclick = () => {
             this.gameUI.buttonNewGame.style.display = 'none'
+            this.gameUI.buttonAgain.style.display = 'none'
             this.gameUI.newGameUI.style.visibility = 'visible'
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
@@ -145,6 +149,7 @@ let game = {
                 if (this.numberOfAttempts > 0) {
                     if (this.enteredNumber == this.hiddenNumber) {
                         messageOutput(`Вы угодали! Было загаданно число ${this.hiddenNumber}`)
+                        buttonAgainVisibility()
                         console.log('the number is guessed')
                     } else if (this.enteredNumber > this.hiddenNumber) {
                         this.numberOfAttempts--
@@ -161,6 +166,9 @@ let game = {
                     }
                 } else {
                     messageOutput(`Попытки закончились, игра завершена`)
+
+                    buttonAgainVisibility()
+                                        
                     console.log('attempts ended')
                     console.log('numberOfAttempts ' + this.numberOfAttempts)
                     
@@ -202,9 +210,27 @@ let game = {
             console.log('enteredNumber ' + this.enteredNumber)
         }
 
+        
+
     const messageOutput = (message) => {
         this.gameUI.labelMessage.innerHTML = message
         }
+
+    const buttonAgainVisibility = () => {
+        this.gameUI.buttonAgain.style.display = 'block'
+        this.gameUI.buttonZero.style.visibility = 'hidden'
+        this.gameUI.buttonOne.style.visibility = 'hidden'
+        this.gameUI.buttonTwo.style.visibility = 'hidden'
+        this.gameUI.buttonThree.style.visibility = 'hidden'
+        this.gameUI.buttonFour.style.visibility = 'hidden'
+        this.gameUI.buttonFive.style.visibility = 'hidden'
+        this.gameUI.buttonSix.style.visibility = 'hidden'
+        this.gameUI.buttonSeven.style.visibility = 'hidden'
+        this.gameUI.buttonEight.style.visibility = 'hidden'
+        this.gameUI.buttonNine.style.visibility = 'hidden'
+        this.gameUI.buttonBackspace.style.visibility = 'hidden'
+        this.gameUI.buttonCheck.style.visibility = 'hidden'            
+    }
     
     const generatingRandomNumber = (min, max) => {
             return Math.floor(Math.random() * (max - min + 1) + min)
