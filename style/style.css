@@ -95,7 +95,7 @@ h1 {
     display: block;
 }
 
-.labelEnteredNumber, .labelMessage, .buttonZero, .buttonOne, .buttonTwo, .buttonThree, .buttonFour, 
+.labelEnteredNumber, .labelMessage, .buttonAgain, .buttonZero, .buttonOne, .buttonTwo, .buttonThree, .buttonFour, 
 .buttonFive, .buttonSix, .buttonSeven, .buttonEight, .buttonNine, .buttonBackspace, .buttonCheck {
     margin: 17px;
 }
