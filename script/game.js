@@ -2,7 +2,7 @@ let game = {
     ctx: null,
     with: 1280,
     height: 1080,
-    gameRunning: false,
+    newGame: false,
     minNumber: 0,
     maxNumber: 10,
     enteredNumber: null,
@@ -83,14 +83,32 @@ let game = {
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
+            this.newGame = true
             //this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
             //this.gameUI.labelMessage.innerHTML = this.messages
             
 
-            
+            console.log('----------------')
             console.log('hiddenNumber ' + this.hiddenNumber)
             console.log('numberOfAttempts ' + this.numberOfAttempts)
-            console.log('buttonNewGame')    
+            console.log('buttonNewGame')
+            console.log('----------------')    
+        }
+
+        this.gameUI.buttonAgain.onclick = () => {
+            this.gameUI.buttonAgain.style.display = 'none'
+            this.arrayEnteredNumbers = []
+            this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
+            this.numberOfAttempts = 3
+            messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
+            this.newGame = true
+            buttonAgainVisibility()
+
+            console.log('----------------')
+            console.log('hiddenNumber ' + this.hiddenNumber)
+            console.log('numberOfAttempts ' + this.numberOfAttempts)
+            console.log('buttonAgain')
+            console.log('----------------')
         }
 
         this.gameUI.buttonZero.onclick = () => {
@@ -149,6 +167,7 @@ let game = {
                 if (this.numberOfAttempts > 0) {
                     if (this.enteredNumber == this.hiddenNumber) {
                         messageOutput(`Вы угодали! Было загаданно число ${this.hiddenNumber}`)
+                        this.newGame = false
                         buttonAgainVisibility()
                         console.log('the number is guessed')
                     } else if (this.enteredNumber > this.hiddenNumber) {
@@ -166,7 +185,7 @@ let game = {
                     }
                 } else {
                     messageOutput(`Попытки закончились, игра завершена`)
-
+                    this.newGame = false    
                     buttonAgainVisibility()
                                         
                     console.log('attempts ended')
@@ -217,19 +236,35 @@ let game = {
         }
 
     const buttonAgainVisibility = () => {
-        this.gameUI.buttonAgain.style.display = 'block'
-        this.gameUI.buttonZero.style.visibility = 'hidden'
-        this.gameUI.buttonOne.style.visibility = 'hidden'
-        this.gameUI.buttonTwo.style.visibility = 'hidden'
-        this.gameUI.buttonThree.style.visibility = 'hidden'
-        this.gameUI.buttonFour.style.visibility = 'hidden'
-        this.gameUI.buttonFive.style.visibility = 'hidden'
-        this.gameUI.buttonSix.style.visibility = 'hidden'
-        this.gameUI.buttonSeven.style.visibility = 'hidden'
-        this.gameUI.buttonEight.style.visibility = 'hidden'
-        this.gameUI.buttonNine.style.visibility = 'hidden'
-        this.gameUI.buttonBackspace.style.visibility = 'hidden'
-        this.gameUI.buttonCheck.style.visibility = 'hidden'            
+        if (this.newGame == true) {
+            this.gameUI.buttonZero.style.visibility = 'visible'
+            this.gameUI.buttonOne.style.visibility = 'visible'
+            this.gameUI.buttonTwo.style.visibility = 'visible'
+            this.gameUI.buttonThree.style.visibility = 'visible'
+            this.gameUI.buttonFour.style.visibility = 'visible'
+            this.gameUI.buttonFive.style.visibility = 'visible'
+            this.gameUI.buttonSix.style.visibility = 'visible'
+            this.gameUI.buttonSeven.style.visibility = 'visible'
+            this.gameUI.buttonEight.style.visibility = 'visible'
+            this.gameUI.buttonNine.style.visibility = 'visible'
+            this.gameUI.buttonBackspace.style.visibility = 'visible'
+            this.gameUI.buttonCheck.style.visibility = 'visible' 
+        } else {
+            this.gameUI.labelEnteredNumber.innerHTML = ''
+            this.gameUI.buttonAgain.style.display = 'block'
+            this.gameUI.buttonZero.style.visibility = 'hidden'
+            this.gameUI.buttonOne.style.visibility = 'hidden'
+            this.gameUI.buttonTwo.style.visibility = 'hidden'
+            this.gameUI.buttonThree.style.visibility = 'hidden'
+            this.gameUI.buttonFour.style.visibility = 'hidden'
+            this.gameUI.buttonFive.style.visibility = 'hidden'
+            this.gameUI.buttonSix.style.visibility = 'hidden'
+            this.gameUI.buttonSeven.style.visibility = 'hidden'
+            this.gameUI.buttonEight.style.visibility = 'hidden'
+            this.gameUI.buttonNine.style.visibility = 'hidden'
+            this.gameUI.buttonBackspace.style.visibility = 'hidden'
+            this.gameUI.buttonCheck.style.visibility = 'hidden'
+        }        
     }
     
     const generatingRandomNumber = (min, max) => {
