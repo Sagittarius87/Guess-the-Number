@@ -21,6 +21,7 @@ let game = {
         soundClick: null
     },
     gameUI: {
+        mainImage: null,
         buttonNewGame: null,
         newGameUI: null,
         labelEnteredNumber: null,
@@ -40,6 +41,8 @@ let game = {
         buttonCheck: null
     },
     init() {
+        this.gameUI.mainImage = document.getElementById('mainImage2')
+        console.log(this.gameUI.mainImage)
         this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
         console.log(this.gameUI.buttonNewGame)
         this.gameUI.newGameUI = document.getElementById('newGameUI')
@@ -82,6 +85,7 @@ let game = {
             this.gameUI.newGameUI.style.visibility = 'visible'
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
+            settingImageSmile('src', '/img/mainImage2.png')
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
             this.newGame = true
             //this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
@@ -100,6 +104,7 @@ let game = {
             this.arrayEnteredNumbers = []
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
+            settingImageSmile('src', '/img/mainImage2.png')
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
             this.newGame = true
             buttonAgainVisibility()
@@ -166,24 +171,28 @@ let game = {
             if (this.enteredNumber != null && this.arrayEnteredNumbers.length > 0) {
                 if (this.numberOfAttempts > 0) {
                     if (this.enteredNumber == this.hiddenNumber) {
+                        settingImageSmile('src', this.sprites.imageSmile3)
                         messageOutput(`Вы угодали! Было загаданно число ${this.hiddenNumber}`)
                         this.newGame = false
                         buttonAgainVisibility()
                         console.log('the number is guessed')
                     } else if (this.enteredNumber > this.hiddenNumber) {
                         this.numberOfAttempts--
+                        settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число больше! Осталось попыток: ${this.numberOfAttempts}`)
                         
                         console.log('the entered number is greater than')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
                     } else if (this.enteredNumber < this.hiddenNumber) {
                         this.numberOfAttempts--
+                        settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число меньше! Осталось попыток: ${this.numberOfAttempts}`)
                         
                         console.log('the entered number is less than')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
                     }
                 } else {
+                    settingImageSmile('src', this.sprites.imageSmile5)
                     messageOutput(`Попытки закончились, игра завершена`)
                     this.newGame = false    
                     buttonAgainVisibility()
@@ -267,11 +276,22 @@ let game = {
         }        
     }
     
+    const settingImageSmile = (attributeName, attributeValue) => {
+        this.gameUI.mainImage.setAttribute(attributeName, attributeValue)
+    }
+
     const generatingRandomNumber = (min, max) => {
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
     },
-    preload() {},
+    preload() {
+        this.sprites.imageSmile3 = '/img/imageSmile3.png'
+        console.log(this.sprites.imageSmile3)
+        this.sprites.imageSmile4 = '/img/imageSmile4.png'
+        console.log(this.sprites.imageSmile4)
+        this.sprites.imageSmile5 = '/img/imageSmile5.png'
+        console.log(this.sprites.imageSmile5)
+    },
     update() {
         
     },
@@ -280,6 +300,7 @@ let game = {
 }
 
 game.init()
+game.preload()
 game.setEvants()
 
 // let game = {
