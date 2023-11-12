@@ -1,7 +1,4 @@
 let game = {
-    ctx: null,
-    with: 1280,
-    height: 1080,
     newGame: false,
     minNumber: 0,
     maxNumber: 10,
