@@ -84,7 +84,9 @@ let game = {
             this.numberOfAttempts = 3
             settingImageSmile('src', '/img/mainImage2.png')
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
+            this.sounds.soundClick.play()
             this.newGame = true
+            
             //this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
             //this.gameUI.labelMessage.innerHTML = this.messages
             
@@ -103,6 +105,7 @@ let game = {
             this.numberOfAttempts = 3
             settingImageSmile('src', '/img/mainImage2.png')
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
+            this.sounds.soundClick.play()
             this.newGame = true
             buttonAgainVisibility()
 
@@ -158,6 +161,7 @@ let game = {
                 this.arrayEnteredNumbers.pop()
                 this.enteredNumber = this.arrayEnteredNumbers.join('')
                 this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber 
+                this.sounds.soundClick.play()
             }
             console.log('enteredNumber ' + this.enteredNumber)
             console.log('buttonBackspace')
@@ -170,6 +174,7 @@ let game = {
                     if (this.enteredNumber == this.hiddenNumber) {
                         settingImageSmile('src', this.sprites.imageSmile3)
                         messageOutput(`Вы угодали! Было загаданно число ${this.hiddenNumber}`)
+                        this.sounds.soundClick.play()
                         this.newGame = false
                         buttonAgainVisibility()
                         console.log('the number is guessed')
@@ -177,6 +182,7 @@ let game = {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число больше! Осталось попыток: ${this.numberOfAttempts}`)
+                        this.sounds.soundClick.play()
                         
                         console.log('the entered number is greater than')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -184,6 +190,7 @@ let game = {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число меньше! Осталось попыток: ${this.numberOfAttempts}`)
+                        this.sounds.soundClick.play()
                         
                         console.log('the entered number is less than')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -191,6 +198,7 @@ let game = {
                 } else {
                     settingImageSmile('src', this.sprites.imageSmile5)
                     messageOutput(`Попытки закончились, игра завершена`)
+                    this.sounds.soundClick.play()
                     this.newGame = false    
                     buttonAgainVisibility()
                                         
@@ -228,7 +236,8 @@ let game = {
                 }
             }
             this.enteredNumber = Number(this.arrayEnteredNumbers.join(''))
-            this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber    
+            this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber
+            this.sounds.soundClick.play()    
             
             console.log(number)
             console.log(this.arrayEnteredNumbers)
@@ -288,6 +297,9 @@ let game = {
         console.log(this.sprites.imageSmile4)
         this.sprites.imageSmile5 = '/img/imageSmile5.png'
         console.log(this.sprites.imageSmile5)
+
+        this.sounds.soundClick = new Audio('/sounds/bump.mp3')
+        console.log(this.sounds.soundClick)
     },
     update() {
         
