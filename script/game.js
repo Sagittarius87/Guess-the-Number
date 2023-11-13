@@ -306,9 +306,6 @@ let game = {
         this.sounds.soundClick = new Audio('/sounds/bump.mp3')
         console.log(this.sounds.soundClick)
     },
-    update() {
-        
-    },
     render() {},
     //метод, запускающий игру. Здесь происходит инициализация, предзагрузка и обработка событий
     start() {
