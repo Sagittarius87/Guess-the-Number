@@ -37,6 +37,7 @@ let game = {
         buttonBackspace: null,
         buttonCheck: null
     },
+    //метод инициализации, в котором в осноном происходит передача значений свойств обьекта dom нужному свойству из обьекта game
     init() {
         this.gameUI.mainImage = document.getElementById('mainImage2')
         console.log(this.gameUI.mainImage)
@@ -75,6 +76,7 @@ let game = {
         this.gameUI.buttonCheck = document.getElementById('buttonCheck')
         console.log(this.gameUI.buttonCheck)
     },
+    //метод обработки событий
     setEvants() {
         this.gameUI.buttonNewGame.onclick = () => {
             this.gameUI.buttonNewGame.style.display = 'none'
@@ -87,8 +89,7 @@ let game = {
             this.sounds.soundClick.play()
             this.newGame = true
             
-            //this.messages = `Загадано число от ${this.minNumber} до ${this.maxNumber}. Отгадайте его.`
-            //this.gameUI.labelMessage.innerHTML = this.messages
+          
             
 
             console.log('----------------')
@@ -217,6 +218,7 @@ let game = {
             console.log('buttonCheck')
         }
 
+        //функция, отвечающая за ввод числа
         const enteringNumber = (number) => {
             let arrayLength = 0
             if (number == '0') {
@@ -243,13 +245,13 @@ let game = {
             console.log(this.arrayEnteredNumbers)
             console.log('enteredNumber ' + this.enteredNumber)
         }
-
-        
-
+    
+    //функция, отвечающая за вывод сообщения    
     const messageOutput = (message) => {
         this.gameUI.labelMessage.innerHTML = message
         }
-
+    
+    //функция, отвечающая за скрытие или отображение кнопок в случае нажатия на кнопку buttonAgain    
     const buttonAgainVisibility = () => {
         if (this.newGame == true) {
             this.gameUI.buttonZero.style.visibility = 'visible'
@@ -282,14 +284,17 @@ let game = {
         }        
     }
     
+    //функция, отвечающая за смену картинки с смайликом
     const settingImageSmile = (attributeName, attributeValue) => {
         this.gameUI.mainImage.setAttribute(attributeName, attributeValue)
     }
 
+    //функция, генерирующая произвольное целое число
     const generatingRandomNumber = (min, max) => {
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
     },
+    //метод, отвечающий за предзагрузку изображений и звуков
     preload() {
         this.sprites.imageSmile3 = '/img/imageSmile3.png'
         console.log(this.sprites.imageSmile3)
@@ -305,212 +310,13 @@ let game = {
         
     },
     render() {},
-    start() {}
+    //метод, запускающий игру. Здесь происходит инициализация, предзагрузка и обработка событий
+    start() {
+        this.init()
+        this.preload()
+        this.setEvants()
+    }
 }
 
-game.init()
-game.preload()
-game.setEvants()
-
-// let game = {
-//     running: true,
-//     ctx: null,
-//     width: 1280,
-//     height: 1080,
-//     enteredNumber: null,
-//     hiddenNumber: null,
-//     messages: ['0'],
-//     sprites: {
-//         logo: null,
-//         mainImage1: null,
-//         mainImage2: null,
-//         mainImage3: null,
-//         buttonNewGame: null,
-//         labelEnteredNumber: null,
-//         labelMessage: null,
-//         buttonZero: null,
-//         buttonOne: null,
-//         buttonTwo: null,
-//         buttonThree: null,
-//         buttonFour: null,
-//         buttonFive: null,
-//         buttonSix: null,
-//         buttonSeven: null,
-//         buttonEight: null,
-//         buttonNine: null,
-//         buttonBackspace: null,
-//         buttonCheck: null,
-//         imageSmile1: null,
-//         imageSmile2: null,
-//         imageSmile3: null,
-//         imageSmile4: null,
-//         imageSmile5: null
-//     },
-//     sounds: {
-//         soundClick: null
-//     },
-//     gameUI: {
-//         buttonNewGame: {
-//             x: 517,
-//             y: 490,
-//             width: 251,
-//             height: 75
-//         },
-//         eventOfButton(buttonName) {
-//             window.addEventListener('mousedown', e => {
-//                 console.log(e)
-//                 if (e.x - 192 >= buttonName.x && e.x - 192 <= buttonName.x + buttonName.width && e.y >= buttonName.y && e.y <= buttonName.y + buttonName.height) {
-//                 //if ((e.x <= buttonName.x + buttonName.width) && (e.y <= buttonName.y + buttonName.height)) {
-//                     console.log('click x and y')
-//                     console.log(e.x)
-//                     console.log(e.y)
-//                     console.log(buttonName.x)
-//                     console.log(buttonName.y)
-//                     console.log(buttonName.width)
-//                     console.log(buttonName.height)
-//                     console.log(buttonName.x + buttonName.width)
-//                     console.log(buttonName.y + buttonName.height)
-//                 } else {
-//                     console.log('not click x and y')
-//                 }
-//             })
-//         }
-//     },
-//     init() {
-//         this.ctx = document.getElementById('idcanvas').getContext('2d')
-//         //this.setEvants()
-        
-//         console.log('canvas start')
-//     },
-//     preload(callback) {
-//         let loaded = 0
-//         let required = Object.keys(this.sprites).length
-//         let onResourcesLoad = () => {
-//             loaded++
-//             if (loaded >= required) {
-//                 callback()
-//             }
-//         }
-//         this.preloadSprites(onResourcesLoad)
-//         console.log(loaded)
-//         console.log(required)   
-//         console.log('preload completed')          
-//     },
-//     preloadSprites(onResourcesLoad) {
-//         for (let key in this.sprites) {
-//             this.sprites[key] = new Image()
-//             this.sprites[key].src = '/img/' + key + '.png'
-//             this.sprites[key].addEventListener('load', onResourcesLoad)
-//         }
-//         console.log('preload all sprites completed')
-
-//         /*
-//         this.logo = new Image()
-//         this.logo.src = '/img/Угодай число.png'
-//         this.logo.addEventListener('load', () => {
-//             window.requestAnimationFrame(() => {
-//                 this.render()
-//                 console.log('logo loaded and drawn')
-//             })
-//         })
-
-//         this.mainImage2 = new Image()
-//         this.mainImage2.src = '/img/Ресурс 2 1.png'
-//         this.mainImage2.addEventListener('load', () => {
-//             window.requestAnimationFrame(() => {
-//                 this.render()
-//                 console.log('mainImage2 loaded and drawn')
-//             })
-//         })
-//         */
-//     },
-//     preloadSounds() {
-//         console.log('preload all sounds completed')
-//     },
-//     update() {
-//         //this.ctx.onmousedown = function(e) {
-//         //    console.log('button new game click')
-//         //} 
-//                 //console.log('update completed')
-//         this.gameUI.eventOfButton(this.gameUI.buttonNewGame)
-               
-//     },
-//     run() {
-//         if (this.running) {
-//             window.requestAnimationFrame(() => {
-//                 this.update()
-//                 this.render()
-//                 this.run()    
-//             })
-            
-//         }
-//         //console.log('run completed')
-//     },
-//     render() {
-//         this.ctx.clearRect(0, 0, this.width, this.height)
-//         this.ctx.drawImage(this.sprites.logo, 376, 39)
-//         this.ctx.drawImage(this.sprites.mainImage2, 547, 169)
-//         this.ctx.drawImage(this.sprites.mainImage1, 46, 136)
-//         this.ctx.drawImage(this.sprites.mainImage3, 777, 136)
-//         this.ctx.drawImage(this.sprites.buttonNewGame, 517, 490)
-        
-        
-        
-        
-//         //console.log('render completed')
-//     },
-//     start() {
-//         this.init()
-//         this.preload(() => {
-//             this.run()
-//         })
-//         console.log('game started')
-        
-//     },
-//     setEvants() {
-//         window.addEventListener('mousedown', (e)=> {
-//             //if (e.which == 1) {
-//             //    console.log(e)
-//             //}
-            
-//             console.log(e)
-//             //console.log(this.ctx.sprites.buttonNewGame.x)
-//         }) 
-//     }
-
-// }
-// /*
-// game.gameUI = {
-//     buttonNewGame: {
-//         x: 517,
-//         y: 490,
-//         width: 251,
-//         height: 75
-//     },
-    
-//     eventOfButton(buttonName) {
-//         window.addEventListener('mousedown', e => {
-//             console.log(e)
-//             if (e.x > this.buttonName.x + this.buttonName.width) {
-//                 console.log('click x')
-//                 console.log(e.x)
-//                 console.log(this.buttonName.x)
-//                 console.log(this.buttonName.width)
-//                 console.log(this.buttonName.x + this.buttonName.width)
-//             } else {
-//                 console.log('not click x')
-//             }
-//         })
-//     }
-// }
-// */
-
-// window.addEventListener('load', () => {
-//     game.start()
-// })
-
-
-
-
-
-
+//запуск игры
+game.start()
