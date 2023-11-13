@@ -253,7 +253,7 @@ let game = {
             this.gameUI.buttonCheck.style.visibility = 'hidden'
         }        
     }
-    
+
     //функция, отвечающая за смену картинки с смайликом
     const settingImageSmile = (attributeName, attributeValue) => {
         this.gameUI.mainImage.setAttribute(attributeName, attributeValue)
