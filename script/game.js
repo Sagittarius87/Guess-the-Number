@@ -8,8 +8,6 @@ let game = {
     messages: null,
     numberOfAttempts: null,
     sprites: {
-        imageSmile1: null,
-        imageSmile2: null,
         imageSmile3: null,
         imageSmile4: null,
         imageSmile5: null
@@ -40,41 +38,23 @@ let game = {
     //метод инициализации, в котором в осноном происходит передача значений свойств обьекта dom нужному свойству из обьекта game
     init() {
         this.gameUI.mainImage = document.getElementById('mainImage2')
-        console.log(this.gameUI.mainImage)
         this.gameUI.buttonNewGame = document.getElementById('buttonNewGame')
-        console.log(this.gameUI.buttonNewGame)
         this.gameUI.newGameUI = document.getElementById('newGameUI')
-        console.log(this.gameUI.newGameUI)
         this.gameUI.labelEnteredNumber = document.getElementById('labelEnteredNumber')
-        console.log(this.gameUI.labelEnteredNumber)
         this.gameUI.labelMessage = document.getElementById('labelMessage')
-        console.log(this.gameUI.labelMessage)
         this.gameUI.buttonAgain = document.getElementById('buttonAgain')
-        console.log(this.gameUI.buttonAgain)
         this.gameUI.buttonZero = document.getElementById('buttonZero')
-        console.log(this.gameUI.buttonZero)
         this.gameUI.buttonOne = document.getElementById('buttonOne')
-        console.log(this.gameUI.buttonOne)
         this.gameUI.buttonTwo = document.getElementById('buttonTwo')
-        console.log(this.gameUI.buttonTwo)
         this.gameUI.buttonThree = document.getElementById('buttonThree')
-        console.log(this.gameUI.buttonThree)
         this.gameUI.buttonFour = document.getElementById('buttonFour')
-        console.log(this.gameUI.buttonFour)
         this.gameUI.buttonFive = document.getElementById('buttonFive')
-        console.log(this.gameUI.buttonFive)
         this.gameUI.buttonSix = document.getElementById('buttonSix')
-        console.log(this.gameUI.buttonSix)
         this.gameUI.buttonSeven = document.getElementById('buttonSeven')
-        console.log(this.gameUI.buttonSeven)
         this.gameUI.buttonEight = document.getElementById('buttonEight')
-        console.log(this.gameUI.buttonEight)
         this.gameUI.buttonNine = document.getElementById('buttonNine')
-        console.log(this.gameUI.buttonNine)
         this.gameUI.buttonBackspace = document.getElementById('buttonBackspace')
-        console.log(this.gameUI.buttonBackspace)
         this.gameUI.buttonCheck = document.getElementById('buttonCheck')
-        console.log(this.gameUI.buttonCheck)
     },
     //метод обработки событий
     setEvants() {
@@ -88,10 +68,6 @@ let game = {
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
             this.sounds.soundClick.play()
             this.newGame = true
-            
-          
-            
-
             console.log('----------------')
             console.log('hiddenNumber ' + this.hiddenNumber)
             console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -109,7 +85,6 @@ let game = {
             this.sounds.soundClick.play()
             this.newGame = true
             buttonAgainVisibility()
-
             console.log('----------------')
             console.log('hiddenNumber ' + this.hiddenNumber)
             console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -164,9 +139,11 @@ let game = {
                 this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber 
                 this.sounds.soundClick.play()
             }
+            console.log('----------------')
             console.log('enteredNumber ' + this.enteredNumber)
             console.log('buttonBackspace')
             console.log(this.arrayEnteredNumbers)
+            console.log('----------------')
         }
 
         this.gameUI.buttonCheck.onclick = () => {
@@ -178,23 +155,22 @@ let game = {
                         this.sounds.soundClick.play()
                         this.newGame = false
                         buttonAgainVisibility()
-                        console.log('the number is guessed')
                     } else if (this.enteredNumber > this.hiddenNumber) {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число больше! Осталось попыток: ${this.numberOfAttempts}`)
                         this.sounds.soundClick.play()
-                        
-                        console.log('the entered number is greater than')
+                        console.log('----------------')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
+                        console.log('----------------')
                     } else if (this.enteredNumber < this.hiddenNumber) {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число меньше! Осталось попыток: ${this.numberOfAttempts}`)
                         this.sounds.soundClick.play()
-                        
-                        console.log('the entered number is less than')
+                        console.log('----------------')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
+                        console.log('----------------')
                     }
                 } else {
                     settingImageSmile('src', this.sprites.imageSmile5)
@@ -202,20 +178,13 @@ let game = {
                     this.sounds.soundClick.play()
                     this.newGame = false    
                     buttonAgainVisibility()
-                                        
-                    console.log('attempts ended')
+                    console.log('----------------')
                     console.log('numberOfAttempts ' + this.numberOfAttempts)
-                    
+                    console.log('----------------')                    
                 }
-
-                console.log('checking')
             } else {
                 messageOutput(`Вы не ввели число. Введите его!`)
-
-                console.log('not checking')
             }
-
-            console.log('buttonCheck')
         }
 
         //функция, отвечающая за ввод числа
@@ -240,10 +209,11 @@ let game = {
             this.enteredNumber = Number(this.arrayEnteredNumbers.join(''))
             this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber
             this.sounds.soundClick.play()    
-            
+            console.log('----------------')
             console.log(number)
             console.log(this.arrayEnteredNumbers)
             console.log('enteredNumber ' + this.enteredNumber)
+            console.log('----------------')
         }
     
     //функция, отвечающая за вывод сообщения    
@@ -297,16 +267,10 @@ let game = {
     //метод, отвечающий за предзагрузку изображений и звуков
     preload() {
         this.sprites.imageSmile3 = '/img/imageSmile3.png'
-        console.log(this.sprites.imageSmile3)
         this.sprites.imageSmile4 = '/img/imageSmile4.png'
-        console.log(this.sprites.imageSmile4)
         this.sprites.imageSmile5 = '/img/imageSmile5.png'
-        console.log(this.sprites.imageSmile5)
-
         this.sounds.soundClick = new Audio('/sounds/bump.mp3')
-        console.log(this.sounds.soundClick)
     },
-    render() {},
     //метод, запускающий игру. Здесь происходит инициализация, предзагрузка и обработка событий
     start() {
         this.init()
