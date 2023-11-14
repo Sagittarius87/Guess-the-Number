@@ -151,7 +151,7 @@ let game = {
                 if (this.numberOfAttempts > 0) {
                     if (this.enteredNumber == this.hiddenNumber) {
                         settingImageSmile('src', this.sprites.imageSmile3)
-                        messageOutput(`Вы угодали! Было загаданно число ${this.hiddenNumber}`)
+                        messageOutput(`Вы угадали! Было загадано число ${this.hiddenNumber}`)
                         this.sounds.soundClick.play()
                         this.newGame = false
                         buttonAgainVisibility()
