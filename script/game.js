@@ -62,6 +62,18 @@ let game = {
             this.gameUI.buttonNewGame.style.display = 'none'
             this.gameUI.buttonAgain.style.display = 'none'
             this.gameUI.newGameUI.style.visibility = 'visible'
+            this.gameUI.buttonZero.style.display = 'block'
+            this.gameUI.buttonOne.style.display = 'block'
+            this.gameUI.buttonTwo.style.display = 'block'
+            this.gameUI.buttonThree.style.display = 'block'
+            this.gameUI.buttonFour.style.display = 'block'
+            this.gameUI.buttonFive.style.display = 'block'
+            this.gameUI.buttonSix.style.display = 'block'
+            this.gameUI.buttonSeven.style.display = 'block'
+            this.gameUI.buttonEight.style.display = 'block'
+            this.gameUI.buttonNine.style.display = 'block'
+            this.gameUI.buttonBackspace.style.display = 'block'
+            this.gameUI.buttonCheck.style.display = 'block' 
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
             settingImageSmile('src', '/img/mainImage2.png')
@@ -235,7 +247,8 @@ let game = {
             this.gameUI.buttonEight.style.visibility = 'visible'
             this.gameUI.buttonNine.style.visibility = 'visible'
             this.gameUI.buttonBackspace.style.visibility = 'visible'
-            this.gameUI.buttonCheck.style.visibility = 'visible' 
+            this.gameUI.buttonCheck.style.visibility = 'visible'
+            this.gameUI.buttonCheck.style.display = 'block'
         } else {
             this.gameUI.labelEnteredNumber.innerHTML = ''
             this.gameUI.buttonAgain.style.display = 'block'
@@ -251,6 +264,7 @@ let game = {
             this.gameUI.buttonNine.style.visibility = 'hidden'
             this.gameUI.buttonBackspace.style.visibility = 'hidden'
             this.gameUI.buttonCheck.style.visibility = 'hidden'
+            this.gameUI.buttonCheck.style.display = 'none'
         }        
     }
 
