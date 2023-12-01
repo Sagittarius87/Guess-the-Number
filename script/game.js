@@ -55,6 +55,15 @@ let game = {
         this.gameUI.buttonNine = document.getElementById('buttonNine')
         this.gameUI.buttonBackspace = document.getElementById('buttonBackspace')
         this.gameUI.buttonCheck = document.getElementById('buttonCheck')
+        //инициализация яндекс сдк
+        YaGames
+            .init()
+            .then(ysdk => {
+                ysdk.adv.showFullscreenAdv()
+                console.log('Yandex SDK initialized')
+                window.ysdk = ysdk
+                console.log(ysdk)
+            })
     },
     //метод обработки событий
     setEvants() {
@@ -190,6 +199,8 @@ let game = {
                     this.sounds.soundClick.play()
                     this.newGame = false    
                     buttonAgainVisibility()
+                    //показы рекламного блока из яндекс сдк
+                    ysdk.adv.showFullscreenAdv()
                     console.log('----------------')
                     console.log('numberOfAttempts ' + this.numberOfAttempts)
                     console.log('----------------')                    
@@ -295,3 +306,4 @@ let game = {
 
 //запуск игры
 game.start()
+
