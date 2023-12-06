@@ -1,13 +1,13 @@
 @font-face {
-    font-family: Nautilius Pompilius;
-    src: url("font/Nautiluspompilius-X7JG.otf");
+    font-family: "Nautilius Pompilius";
+    src: url("/font/Nautiluspompilius-X7JG.otf");
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Nautilius Pompilius;
+    font-family: "Nautilius Pompilius";
     color: white;
 }
 
