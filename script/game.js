@@ -59,7 +59,6 @@ let game = {
         YaGames
             .init()
             .then(ysdk => {
-                ysdk.adv.showFullscreenAdv()
                 console.log('Yandex SDK initialized')
                 window.ysdk = ysdk
                 console.log(ysdk)
