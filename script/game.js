@@ -85,7 +85,7 @@ let game = {
             this.gameUI.buttonCheck.style.display = 'block' 
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
-            settingImageSmile('src', '/img/mainImage2.png')
+            settingImageSmile('src', 'img/mainImage2.png')
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
             this.sounds.soundClick.play()
             this.newGame = true
@@ -101,7 +101,7 @@ let game = {
             this.arrayEnteredNumbers = []
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
             this.numberOfAttempts = 3
-            settingImageSmile('src', '/img/mainImage2.png')
+            settingImageSmile('src', 'img/mainImage2.png')
             messageOutput(`Загадано число от ${this.minNumber} до ${this.maxNumber}, отгадайте его`)
             this.sounds.soundClick.play()
             this.newGame = true
@@ -291,10 +291,10 @@ let game = {
     },
     //метод, отвечающий за предзагрузку изображений и звуков
     preload() {
-        this.sprites.imageSmile3 = '/img/imageSmile3.png'
-        this.sprites.imageSmile4 = '/img/imageSmile4.png'
-        this.sprites.imageSmile5 = '/img/imageSmile5.png'
-        this.sounds.soundClick = new Audio('/sounds/bump.mp3')
+        this.sprites.imageSmile3 = 'img/imageSmile3.png'
+        this.sprites.imageSmile4 = 'img/imageSmile4.png'
+        this.sprites.imageSmile5 = 'img/imageSmile5.png'
+        this.sounds.soundClick = new Audio('sounds/bump.mp3')
     },
     //метод, запускающий игру. Здесь происходит инициализация, предзагрузка и обработка событий
     start() {
