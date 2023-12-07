@@ -180,13 +180,9 @@ let game = {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число больше! Осталось попыток: ${this.numberOfAttempts}`)
-
                         if (this.numberOfAttempts != 0) {
                             deletingEnteredNumber()
-                            //this.gameUI.labelEnteredNumber.innerHTML = ''
-                            //this.arrayEnteredNumbers.pop()
                         }
-
                         this.sounds.soundClick.play()
                         console.log('----------------')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -195,13 +191,9 @@ let game = {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число меньше! Осталось попыток: ${this.numberOfAttempts}`)
-
                         if (this.numberOfAttempts != 0) {
                             deletingEnteredNumber()
-                            //this.gameUI.labelEnteredNumber.innerHTML = ''
-                            //this.arrayEnteredNumbers.pop()
                         }
-
                         this.sounds.soundClick.play()
                         console.log('----------------')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -220,10 +212,7 @@ let game = {
                     console.log('----------------')                    
                 }
                 if (this.numberOfAttempts == 0) {
-
                     this.gameUI.buttonCheck.innerHTML = 'Завершить'
-
-                    console.log('numberOfAttempts == 0')
                 }
             } else {
                 messageOutput(`Вы не ввели число. Введите его!`)
@@ -248,8 +237,7 @@ let game = {
                 while (this.arrayEnteredNumbers.length < 2) {
                     this.arrayEnteredNumbers.push(number)                    
                 }
-            }
-            
+            }          
             this.enteredNumber = Number(this.arrayEnteredNumbers.join(''))
             this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber
             this.sounds.soundClick.play()    
