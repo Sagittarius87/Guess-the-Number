@@ -96,6 +96,7 @@ let game = {
         }
 
         this.gameUI.buttonAgain.onclick = () => {
+            this.gameUI.buttonCheck.innerHTML = 'Проверить'
             this.gameUI.buttonAgain.style.display = 'none'
             this.arrayEnteredNumbers = []
             this.hiddenNumber = generatingRandomNumber(this.minNumber, this.maxNumber)
@@ -179,6 +180,13 @@ let game = {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число больше! Осталось попыток: ${this.numberOfAttempts}`)
+
+                        if (this.numberOfAttempts != 0) {
+                            deletingEnteredNumber()
+                            //this.gameUI.labelEnteredNumber.innerHTML = ''
+                            //this.arrayEnteredNumbers.pop()
+                        }
+
                         this.sounds.soundClick.play()
                         console.log('----------------')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -187,6 +195,13 @@ let game = {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
                         messageOutput(`Увы, введенное число меньше! Осталось попыток: ${this.numberOfAttempts}`)
+
+                        if (this.numberOfAttempts != 0) {
+                            deletingEnteredNumber()
+                            //this.gameUI.labelEnteredNumber.innerHTML = ''
+                            //this.arrayEnteredNumbers.pop()
+                        }
+
                         this.sounds.soundClick.play()
                         console.log('----------------')
                         console.log('numberOfAttempts ' + this.numberOfAttempts)
@@ -203,6 +218,12 @@ let game = {
                     console.log('----------------')
                     console.log('numberOfAttempts ' + this.numberOfAttempts)
                     console.log('----------------')                    
+                }
+                if (this.numberOfAttempts == 0) {
+
+                    this.gameUI.buttonCheck.innerHTML = 'Завершить'
+
+                    console.log('numberOfAttempts == 0')
                 }
             } else {
                 messageOutput(`Вы не ввели число. Введите его!`)
@@ -228,6 +249,7 @@ let game = {
                     this.arrayEnteredNumbers.push(number)                    
                 }
             }
+            
             this.enteredNumber = Number(this.arrayEnteredNumbers.join(''))
             this.gameUI.labelEnteredNumber.innerHTML = this.enteredNumber
             this.sounds.soundClick.play()    
@@ -281,6 +303,12 @@ let game = {
     //функция, отвечающая за смену картинки с смайликом
     const settingImageSmile = (attributeName, attributeValue) => {
         this.gameUI.mainImage.setAttribute(attributeName, attributeValue)
+    }
+
+    //функция, очищающая labelEnteredNumber и удаляющая последнее введенное число из arrayEnteredNumbers
+    const deletingEnteredNumber = () => {
+        this.gameUI.labelEnteredNumber.innerHTML = ''
+        this.arrayEnteredNumbers.pop()
     }
 
     //функция, генерирующая произвольное целое число
