@@ -7,6 +7,7 @@ let game = {
     hiddenNumber: null,
     messages: null,
     numberOfAttempts: null,
+    score: null,
     sprites: {
         imageSmile3: null,
         imageSmile4: null,
@@ -61,7 +62,8 @@ let game = {
             .then(ysdk => {
                 console.log('Yandex SDK initialized')
                 window.ysdk = ysdk
-                console.log(ysdk)
+                console.log('window.ysdk')
+                console.log(window.ysdk)
             })
     },
     //метод обработки событий
@@ -173,9 +175,33 @@ let game = {
                     if (this.enteredNumber == this.hiddenNumber) {
                         settingImageSmile('src', this.sprites.imageSmile3)
                         messageOutput(`Вы угадали! Было загадано число ${this.hiddenNumber}`)
+                        this.score++
                         this.sounds.soundClick.play()
                         this.newGame = false
                         buttonAgainVisibility()
+                        //устанавливаем новый результат для игрока
+                        console.log('setLeaderboardScore')
+                        console.log('score: ' + this.score)
+                        ysdk.getLeaderboards().then(lb => {lb.setLeaderboardScore('leaderBoard', this.score)})
+                        //получаем рейтинг
+                        console.log('getLeaderboardPlayerEntry')
+                        ysdk.getLeaderboards()
+                            .then(lb => lb.getLeaderboardPlayerEntry('leaderBoard'))
+                            .then(res => {
+                                console.log(res)
+                                console.log(typeof res)
+                                console.log('publicName: ' + res.player.publicName)
+                            })
+                            .catch(err => {
+                                if (err.code === 'LEADERBOARD_PLAYER_NOT_PRESENT') {
+                                    console.log(err)
+                                }
+                            })
+                        //вывод рейтинга пользователей
+                        console.log('getLeaderboardEntries')
+                        ysdk.getLeaderboards().then(lb => lb.getLeaderboardEntries('leaderBoard')).then(res => console.log(res))
+                        console.log('ysdk')
+                        console.log(ysdk)
                     } else if (this.enteredNumber > this.hiddenNumber) {
                         this.numberOfAttempts--
                         settingImageSmile('src', this.sprites.imageSmile4)
@@ -321,4 +347,3 @@ let game = {
 
 //запуск игры
 game.start()
-
